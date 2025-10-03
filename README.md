@@ -32,11 +32,11 @@ ARKMODEL_BASE_URL=https://api.byteplus.com
 ARKMODEL_MODEL_NAME=your_model_name
 
 # Database Configuration
-DB_HOST=103.67.244.224
+DB_HOST=your_db_host
 DB_PORT=5432
-DB_NAME=smartreporting_db
-DB_USER=postgres
-DB_PASSWORD=password
+DB_NAME=your_db_name
+DB_USER=your_db_user
+DB_PASSWORD=your_user_pass
 ```
 
 ## Database Setup
