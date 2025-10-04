@@ -43,6 +43,10 @@ DB_PASSWORD=your_user_pass
 
 API menggunakan PostgreSQL database untuk menyimpan data unit kerja secara dinamis. Pastikan database sudah dikonfigurasi dengan benar.
 
+```bash
+python database_setup.py
+```
+
 ### Struktur Tabel
 
 ```sql
