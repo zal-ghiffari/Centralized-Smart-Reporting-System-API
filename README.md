@@ -46,6 +46,50 @@ API menggunakan PostgreSQL database untuk menyimpan data unit kerja secara dinam
 ### Struktur Tabel
 
 ```sql
+CREATE TABLE IF NOT EXISTS raw_data (
+    id SERIAL PRIMARY KEY,
+    content TEXT NOT NULL,
+    language VARCHAR(10) NOT NULL,
+    from_field VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+CREATE TABLE IF NOT EXISTS extraction_data (
+    id SERIAL PRIMARY KEY,
+    content TEXT NOT NULL,
+    language VARCHAR(10) NOT NULL,
+    from_field VARCHAR(255) NOT NULL,
+    type VARCHAR(255) NOT NULL,
+	topic TEXT[],
+	sentiment VARCHAR(100),
+	sentiment_score NUMERIC(5, 4),
+	emotions TEXT[],
+	entities TEXT[],
+	locations TEXT[],
+	hashtags TEXT[],
+	summary TEXT,
+	recommended_unit_name VARCHAR(255),
+	recommended_unit_email VARCHAR(100),
+	recommended_unit_desc TEXT,
+	recommended_unit_confidence NUMERIC(5, 4),
+	recommended_unit_match_key TEXT[],
+	alternative_units TEXT[],
+	classification_reason TEXT,
+	processing_time NUMERIC,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
+CREATE TABLE IF NOT EXISTS log_data (
+    id SERIAL PRIMARY KEY,
+    action TEXT NOT NULL,
+    status VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+
 CREATE TABLE unit_kerja (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) UNIQUE NOT NULL,
